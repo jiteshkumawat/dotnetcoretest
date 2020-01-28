@@ -12669,11 +12669,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\NAGP Devops\\test\\test.csproj",
+      "projectUniqueName": "D:\\NAGP Devops\\test3\\test.csproj",
       "projectName": "test",
-      "projectPath": "D:\\NAGP Devops\\test\\test.csproj",
+      "projectPath": "D:\\NAGP Devops\\test3\\test.csproj",
       "packagesPath": "C:\\Users\\jiteshkumawat\\.nuget\\packages\\",
-      "outputPath": "D:\\NAGP Devops\\test\\obj\\",
+      "outputPath": "D:\\NAGP Devops\\test3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
