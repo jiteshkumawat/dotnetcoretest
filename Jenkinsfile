@@ -89,10 +89,7 @@ stages
 	{
 	    steps
 	    {
-		    bat "echo (docker ps --format \"{{.ID}}\")"
-		    bat "docker ps --format \"{{.ID}}\""
-		    bat "echo (docker ps --format \"{{.Names}}\")"		    
-		    bat "docker ps --format \"{{.Names}}\""
+		    bat "docker ps -q --filter \"name=/nagp_assignment\" && docker stop /nagp_assignment && docker rm -f /nagp_assignment"
 	    }
 	}
 	
