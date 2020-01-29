@@ -61,11 +61,49 @@ stages
 			}
 		}
 	}
+	
 	stage ('Release Artifacts')
 	{
 	    steps
 	    {
 	        bat "dotnet publish -c Release -o WebApplication4/app/publish"
+	    }
+	}
+	stage ('Docker Image')
+	{
+		steps
+		{
+		    bat "/bin/docker build --no-cache -t jiteshkum/nagp_assignment:${BUILD_NUMBER} ."
+		}
+	}
+	stage ('Push to DTR')
+	{
+		steps
+		{
+			bat "/bin/docker push jiteshkum/nagp_assignment:${BUILD_NUMBER}"
+		}
+	}
+	
+	stage ('Stop Running container')
+	{
+	    steps
+	    {
+	        bat '''
+                ContainerID=$(docker ps | grep 5000 | cut -d " " -f 1)
+                if [  $ContainerID ]
+                then
+                    docker stop $ContainerID
+                    docker rm -f $ContainerID
+                fi
+            '''
+	    }
+	}
+	
+	stage ('Docker deployment')
+	{
+	    steps
+	    {
+	       bat "docker run --name nagp_assignment -d -p 5000:80 jiteshkum/nagp_assignment:${BUILD_NUMBER}"
 	    }
 	}
 }
