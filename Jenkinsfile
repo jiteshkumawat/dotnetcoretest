@@ -89,8 +89,7 @@ stages
 	{
 	    steps
 	    {
-		    bat "docker ps -q --filter \"name=jiteshkum\" && docker stop jiteshkum && docker rm -f jiteshkum"
-	 
+		    bat "SET ContainerID=$(docker ps --format "{{.ID}}") && docker stop $ContainerID && docker rm -f $ContainerID"
 	    }
 	}
 	
