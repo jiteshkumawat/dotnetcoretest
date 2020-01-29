@@ -19,7 +19,7 @@ options
      
 stages
 {
-	stage ('checkout')
+	stage ('Checkout')
     {
 		steps
 		{
@@ -27,14 +27,14 @@ stages
 		    checkout scm	 
 		}
     }
-    stage ('nuget')
+    stage ('Nuget - Get Repositories')
     {
 		steps
 		{
 			bat "dotnet restore"	 
 		}
     }
-	stage ('Start sonarqube analysis')
+	stage ('SonarQube - Start Analysis')
 	{
 		steps
 		{
@@ -44,14 +44,14 @@ stages
 			}
 		}
 	}
-	stage ('build')
+	stage ('Build')
 	{
 		steps
 		{
 			bat "dotnet build -c Release -o WebApplication4/app/build"
 		}	
 	}
-	stage ('SonarQube Analysis end')
+	stage ('SonarQube - End Analysis')
 	{	
 		steps
 		{
@@ -69,14 +69,14 @@ stages
 	        bat "dotnet publish -c Release -o WebApplication4/app/publish"
 	    }
 	}
-	stage ('Docker Image')
+	stage ('Docker - Create Image')
 	{
 		steps
 		{
 		    bat "docker build --no-cache -t jiteshkum/nagp_assignment:${BUILD_NUMBER} ."
 		}
 	}
-	stage ('Push to DTR')
+	stage ('Docker - Push DockerHub')
 	{
 		steps
 		{
@@ -85,7 +85,7 @@ stages
 		}
 	}
 	
-	stage ('Stop Running container')
+	stage ('Docker - Stop Running container')
 	{
 	    steps
 	    {
@@ -93,11 +93,11 @@ stages
 	    }
 	}
 	
-	stage ('Docker deployment')
+	stage ('Docker - Deployment')
 	{
 	    steps
 	    {
-	       bat "docker run --name nagp_assignment -d -p 5000:80 jiteshkum/nagp_assignment:${BUILD_NUMBER}"
+	       bat "docker run --name /nagp_assignment -d -p 5000:80 jiteshkum/nagp_assignment:${BUILD_NUMBER}"
 	    }
 	}
 }
