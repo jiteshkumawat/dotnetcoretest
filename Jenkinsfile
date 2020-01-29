@@ -73,14 +73,14 @@ stages
 	{
 		steps
 		{
-		    bat "/bin/docker build --no-cache -t jiteshkum/nagp_assignment:${BUILD_NUMBER} ."
+		    bat "docker build --no-cache -t jiteshkum/nagp_assignment:${BUILD_NUMBER} ."
 		}
 	}
 	stage ('Push to DTR')
 	{
 		steps
 		{
-			bat "/bin/docker push jiteshkum/nagp_assignment:${BUILD_NUMBER}"
+			bat "docker push jiteshkum/nagp_assignment:${BUILD_NUMBER}"
 		}
 	}
 	
