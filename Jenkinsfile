@@ -89,7 +89,9 @@ stages
 	{
 	    steps
 	    {
-		    bat "SET ContainerID=$(docker ps --format "{{.ID}}") && docker stop $ContainerID && docker rm -f $ContainerID"
+		    bat "echo $(docker ps --format "{{.ID}}")"
+		    bat "echo $(docker ps --format "{{.Names}}")"
+		    bat "SET ContainerID=$(docker ps --format "{{.ID}}") && docker stop $(ContainerID) && docker rm -f $(ContainerID)"
 	    }
 	}
 	
