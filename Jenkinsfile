@@ -80,6 +80,7 @@ stages
 	{
 		steps
 		{
+			bat "docker login --username jiteshkum --password Passw0rd@1801"
 			bat "docker push jiteshkum/nagp_assignment:${BUILD_NUMBER}"
 		}
 	}
