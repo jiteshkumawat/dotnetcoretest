@@ -89,14 +89,8 @@ stages
 	{
 	    steps
 	    {
-	        bat '''
-                ContainerID=$(docker ps | grep 5000 | cut -d " " -f 1)
-                if [  $ContainerID ]
-                then
-                    docker stop $ContainerID
-                    docker rm -f $ContainerID
-                fi
-            '''
+		    bat "docker ps -q --filter \"name=nagp_assignment\" && docker stop nagp_assignment && docker rm -f nagp_assignment"
+	 
 	    }
 	}
 	
