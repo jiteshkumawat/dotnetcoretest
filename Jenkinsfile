@@ -90,7 +90,9 @@ stages
 	    steps
 	    {
 		    bat "echo (docker ps --format \"{{.ID}}\")"
-		    bat "echo (docker ps --format \"{{.Names}}\")"
+		    bat "docker ps --format \"{{.ID}}\""
+		    bat "echo (docker ps --format \"{{.Names}}\")"		    
+		    bat "docker ps --format \"{{.Names}}\""
 	    }
 	}
 	
