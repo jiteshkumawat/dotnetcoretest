@@ -89,7 +89,7 @@ stages
 	{
 	    steps
 	    {
-		    bat "docker ps -q --filter \"name=nagp_assignment\" && docker stop nagp_assignment && docker rm -f nagp_assignment"
+		    bat "docker ps -q --filter \"name=jiteshkum\" && docker stop jiteshkum && docker rm -f jiteshkum"
 	 
 	    }
 	}
